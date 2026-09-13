@@ -1,0 +1,679 @@
+/* ==========================================
+    1. VARIABLES Y RESET
+   ========================================== */
+:root {
+    --color-primary: #d35400;
+    --color-secondary: #2c3e50;
+    --color-light: #ecf0f1;
+    --color-white: #ffffff;
+    --color-text: #333333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: var(--color-text);
+    line-height: 1.6;
+    /* SIN BACKGROUND - solo en hero y login */
+}
+
+/* ==========================================
+   2. LAYOUT PRINCIPAL (React)
+   ========================================== */
+.app-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex: 1;
+}
+
+/* ==========================================
+   3. NAVBAR
+   ========================================== */
+.navbar {
+    background-color: var(--color-secondary);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    color: var(--color-white);
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.nav-logo a {
+    color: var(--color-white);
+    text-decoration: none;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-menu a {
+    color: var(--color-white);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+    color: var(--color-primary);
+}
+
+.contador {
+    background-color: #ee2020;
+    color: white;
+    font-size: 12px;
+    padding: 3px 7px;
+    border-radius: 50px;
+    margin-left: 5px;
+}
+
+/* ==========================================
+   4. HERO - CON FONDO CORREGIDO
+   ========================================== */
+.hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/imagenes/login.PNG);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--color-white);
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 3rem 1rem;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-content p {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    font-style: italic;
+}
+
+/* ==========================================
+   5. BOTONES
+   ========================================== */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: var(--color-white);
+    color: var(--color-primary);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-light);
+    transform: scale(1.05);
+}
+
+.btn-secondary {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.btn-secondary:hover {
+    background-color: #b84a00;
+    transform: scale(1.05);
+}
+
+.btn-success, .btn-danger {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    margin-bottom: 1rem;
+}
+
+.btn-success:hover, .btn-danger:hover {
+    background-color: var(--color-secondary);
+    transform: scale(1.05);
+}
+
+/* Mantengo tu clase original con typo */
+.btn-secundary {
+    margin-top: 1rem;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.btn-secundary:hover {
+    background-color: var(--color-secondary);
+    transition: transform 0.2s ease;
+    transform: translateY(-3px);
+}
+
+.btn-secundary:active {
+    transform: translateY(0);
+}
+
+/* ==========================================
+   6. SECCIÓN PRODUCTOS (HOME)
+   ========================================== */
+.productos {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 1rem;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--color-secondary);
+}
+
+.productos-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem;
+}
+
+.producto-card {
+    background-color: var(--color-light);
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: visible !important; 
+    position: relative;         
+    z-index: 1;
+}
+
+.producto-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.producto-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.producto-card h3 {
+    font-size: 1.2rem;
+    color: var(--color-secondary);
+}
+
+/* ==========================================
+   7. SECCIÓN DESTACADOS
+   ========================================== */
+.destacados {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 1rem;
+    background-color: var(--color-white);
+}
+
+.destacados-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.destacado-card {
+    background-color: var(--color-white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.destacado-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.destacado-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.destacado-card h3,
+.destacado-card p {
+    padding: 0 1rem;
+}
+
+.destacado-card h3 {
+    padding-top: 1rem;
+    font-size: 1.3rem;
+    color: var(--color-secondary);
+}
+
+.destacado-card p {
+    color: var(--color-text);
+    flex-grow: 1;
+}
+
+.destacado-card .btn {
+    margin: 1rem;
+    align-self: center;
+}
+
+/* ==========================================
+   8. SECCIÓN QUIÉNES SOMOS
+   ========================================== */
+.quienes-somos {
+    padding: 4rem 1rem;
+    background-color: var(--color-light);
+}
+
+.qs-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    justify-content: space-between;
+}
+
+.qs-imagen img {
+    width: 70%;
+    max-width: 420px;
+    border-radius: 8px;
+    display: block;
+}
+
+.qs-texto {
+    flex: 1;
+}
+
+.qs-texto h2 {
+    font-size: 2rem;
+    color: var(--color-secondary);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.qs-texto p {
+    font-size: 1rem;
+    color: var(--color-text);
+    text-align: justify;
+}
+
+.qs-texto .btn {
+    display: block;
+    margin: 2rem auto 0;
+    width: fit-content;
+}
+
+/* ==========================================
+   9. PÁGINA TIENDA
+   ========================================== */
+.container {
+    max-width: 1200px;
+    min-height: 480px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.container .producto-card {
+    background-color: var(--color-white);
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 450px;
+}
+
+.container .producto-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.container .producto-card h3 {
+    margin: 1rem 0 0.5rem;
+    color: var(--color-text);
+    text-align: center;
+}
+
+.container label {
+    font-weight: 600;
+    margin-top: 0.5rem;
+    color: var(--color-secondary);
+}
+
+.container select,
+.form-control {
+    margin-top: 0.5rem;
+    border-radius: 8px;
+    padding: 8px;
+    border: 1px solid #ccc;
+}
+
+.container .btn-primary {
+    grid-column: span 3;
+    justify-self: center;
+    margin-top: 2rem;
+    width: auto;
+    max-width: 200px;
+}
+
+/* ==========================================
+   10. PÁGINA CARRITO
+   ========================================== */
+.carrito-container {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 0 1rem;
+}
+
+.carrito-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.carrito-productos,
+.resumen-compra {
+    background-color: var(--color-light);
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.carrito-productos h2,
+.resumen-compra h2 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-size: 2rem;
+    color: var(--color-text);
+}
+
+.carrito-productos p,
+.resumen-compra p {
+    font-size: 1rem;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+
+/* ==========================================
+   11. LOGIN Y REGISTRO
+   ========================================== */
+.page-login,
+.page-register {
+    background-image: url(/imagenes/login.PNG);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    padding: 50px 20px;
+}
+
+.Form-login,
+.Form-register {
+    width: 400px;
+    background: #323236;
+    padding: 30px;
+    margin: 50px auto;
+    border-radius: 4px;
+    color: white;
+    box-shadow: 7px 13px 37px #000000;
+}
+
+.Form-login {
+    height: 400px;
+    margin-top: 180px;
+    border-top: 4px solid #d35400;
+}
+
+.Form-register h4,
+.Form-login h5 {
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 22px;
+    border-bottom: 1px solid;
+    padding-bottom: 10px;
+}
+
+.controls {
+    width: 100%;
+    background: #252323;
+    padding: 11px 10px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    border: 1px solid #d35400;
+    font-family: 'calibri', Arial, sans-serif;
+    font-size: 14px;
+    color: white;
+    caret-color: white;
+}
+
+.buttons {
+    width: 100%;
+    height: 40px;
+    background: #d35400;
+    border: none;
+    padding: 12px;
+    color: white;
+    margin: 16px 0;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.Form-login p,
+.Form-register p {
+    margin: 15px 0;
+    text-align: center;
+    font-size: 14px;
+}
+
+.Form-login a,
+.Form-register a {
+    color: white;
+    text-decoration: none;
+}
+
+.Form-login a:hover,
+.Form-register a:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================
+   12. FOOTER
+   ========================================== */
+.footer {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+    padding: 2rem 1rem;
+    margin-top: auto;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.footer-section {
+    flex: 1;
+    text-align: center;
+}
+
+.footer-section h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--color-primary);
+}
+
+.footer-section p {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 0.9rem;
+}
+
+/* ==========================================
+   13. RESPONSIVE
+   ========================================== */
+@media (max-width: 992px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0 0.5rem;
+    }
+
+    .nav-menu {
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero {
+        min-height: 60vh;
+        padding: 2rem 1rem;
+    }
+
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+
+    .qs-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .qs-imagen img {
+        max-width: 100%;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .productos-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .destacados-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-container {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-logo {
+        font-size: 1.15rem;
+    }
+
+    .hero {
+        min-height: 50vh;
+        padding: 1.5rem 0.75rem;
+    }
+
+    .hero-content h1 {
+        font-size: 1.6rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .productos-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .producto-card img {
+        height: 140px;
+    }
+
+    .destacados-grid,
+    .container,
+    .carrito-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .qs-texto p {
+        font-size: 0.95rem;
+    }
+
+    .footer-section {
+        padding: 0.75rem 0;
+    }
+
+    .Form-login,
+    .Form-register {
+        width: 90%;
+        margin-top: 50px;
+    }
+}
