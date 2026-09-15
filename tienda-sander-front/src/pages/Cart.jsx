@@ -13,7 +13,8 @@ export default function Cart() {
     const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
     const handleCheckout = async () => {
-        const usuario = localStorage.getItem('user');
+        // ✅ CORREGIDO: Cambiado 'user' por 'userName' para coincidir con Login.jsx
+        const usuario = localStorage.getItem('userName');
         
         if (!usuario) {
             setError('Debes iniciar sesión para finalizar la compra');
