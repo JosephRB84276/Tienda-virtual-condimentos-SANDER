@@ -19,9 +19,11 @@ function App() {
             <Route index element={<Home />} />
             <Route path="about" element={<About />} />
             
-            {/*RUTAS PROTEGIDAS (Requieren login) */}
+            {/*RUTA PÚBLICA*/}
+            <Route path="store" element={<Store />} />   
+            
+            {/*  RUTAS PROTEGIDAS (Requieren login) */}
             <Route element={<ProtectedRoute />}>
-              <Route path="store" element={<Store />} />   
               <Route path="cart" element={<Cart />} />
               <Route path="invoice" element={<Invoice />} />
             </Route>
